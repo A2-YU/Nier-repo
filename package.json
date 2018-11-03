@@ -1,0 +1,26 @@
+{
+  "name": "bot-tuto",
+  "version": "1.1.0",
+  "description": "bot tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no repo"
+  },
+  "keywords": [
+    "test",
+    "fun",
+    "moderator"
+  ],
+  "author": "Nao",
+  "license": "ISC",
+  "dependencies": {
+    "d.js": "^0.7.5",
+    "discord.js": "^11.4.2",
+    "mathjs": "^5.2.2"
+  },
+  "devDependencies": {}
+}
