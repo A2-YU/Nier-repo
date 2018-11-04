@@ -29,7 +29,7 @@ if(argsts === 'slt' | argsts === 'cc' | argsts === 'yosh' | argsts === 'bjr'){
 }
 let user = message.mentions.users.first();
 var author; // mention to get avatar
-if (command === `avatar`){
+if (message.content === prefix + `avatar`){
     if(user){
         var author = user;
 
@@ -50,7 +50,7 @@ if (command === `avatar`){
 
 }
 let calcul = args.join(' ');
-if(command === 'calc'){
+if(message.content === prefix + 'calc'){
     try{
         let mathc = math.eval(calcul);
     if(!mathc){
@@ -79,7 +79,7 @@ if (message.content.includes(myargs)) {
 
 let vcscontent = args.join(' ');
 
-if(command === 'mts'){
+if(message.content === 'cmd in dvp'){
     try{
     
     let embed = new Discord.RichEmbed()
@@ -103,7 +103,7 @@ if(command === 'mts'){
 }
 }
 
-if(command === 'invite'){
+if(message.content === prefix + 'invite'){
     let user = message.author;
     let embed = new Discord.RichEmbed()
 
@@ -118,34 +118,10 @@ if(message.content === '<@505048171718901770>'){
     return message.channel.send(`My prefix is \`${prefix}\``)
 }
 
-if(command === 'help'){
+if(message.content === prefix + 'help'){
     return message.channel.send('```>help | show this panel\n\n>avatar (user) | show an avatar\n\n>calc (1+1) | :3 you already know\n\n'+
     '>mts | speak with others users trough servers (in dvp)```')
 }
-
-if(command === 'eval'){
-
-    function clean(text) {
-        if (typeof(text) === "string")
-          return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-        else
-            return text;
-      }
-    
-          if(message.author.id !== "378879176515780619") return;
-          try {
-            const code = args.join(" ");
-            let evaled = eval(code);
-       
-            if (typeof evaled !== "string")
-              evaled = require("util").inspect(evaled);
-       
-            message.channel.send(clean(evaled), {code:"xl"});
-          } catch (err) {
-            message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
-          }
-}
-
 
 })
 
