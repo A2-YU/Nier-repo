@@ -1,26 +1,32 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const math = require('mathjs');
+var myargs = ['coucou','Bonsouar','Bonswer','Bonjour','wsh','wesh','Yo','hi','hello','slt','salut','salutation","hola',"Kon'nichiwa"]
+
+
 
 var prefix = '>';
 
 client.on("ready", () => {
     console.log('connexion.........')
+    setInterval(function() {
+        let allgame = ['A2 best master ever', `${prefix}help | serving ${client.guilds.size} servers`, 'OwO', `${client.users.size} users`]
+        let gameon = allgame[Math.floor(Math.random()*allgame.length)]
+        client.user.setGame(gameon, 'https://www.twitch.tv/monstercat');
+    }, 45000)
     console.log('connexion établie')
     console.log('connecté en tant que ' + client.user.tag)
     console.log('ID | ' + client.user.id)
-    setInterval(function() {
-        let allgame = ['A2 best master ever', `${prefix}help | serving ${client.guilds.size} servers`, 'OwO', `${client.users.size} users <3`]
-        let gameon = allgame[Math.floor(Math.random()*allgame.length)]
-        client.user.setGame(gameon, 'https://www.twitch.tv/monstercat');
-    }, 20000)
 })
 
 client.on('message', message => {
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const argsts = message.content.split().shift().toLowerCase();
 const command = args.shift().toLowerCase();
     
-
+if(argsts === 'slt' | argsts === 'cc' | argsts === 'yosh' | argsts === 'bjr'){
+    return message.channel.send('Yo')
+}
 let user = message.mentions.users.first();
 var author; // mention to get avatar
 if (command === `avatar`){
@@ -47,7 +53,9 @@ let calcul = args.join(' ');
 if(command === 'calc'){
     try{
         let mathc = math.eval(calcul);
-    
+    if(!mathc){
+        return message.channel.send('```>calc 1+1 | or other calcul```')
+    } else{
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setAuthor(message.author.tag, message.author.avatarURL)
@@ -55,16 +63,25 @@ if(command === 'calc'){
         .addField('Input', `\`\`\`${calcul}\`\`\``)
         .addField('Output', `\`\`\`${mathc}\`\`\``)
         message.channel.send(embed)
+    }
     } catch (error) {
         message.channel.send("It won't work")
         console.log(error)
     }
     
 }
+
+if (message.content.includes(myargs)) {
+    message.channel.send('Yo')
+}
+  
+
+
 let vcscontent = args.join(' ');
 
 if(command === 'mts'){
     try{
+    
     let embed = new Discord.RichEmbed()
 
     .setColor('RANDOM')
@@ -76,7 +93,11 @@ if(command === 'mts'){
     .setTimestamp()
     .setFooter('Received at')
 
-    return client.channels.find('name', 'mts').send(embed)
+    var sendm = 0;
+   // while(sendm<client.channels.find('name', 'mts')){
+    client.channels.find('name', 'mts').send(embed)
+   // sendm++
+   // }
 } catch (error) {
     return
 }
@@ -98,9 +119,35 @@ if(message.content === '<@505048171718901770>'){
 }
 
 if(command === 'help'){
-    return message.channel.send('```>help | show this panel\n\n>avatar (user) | show an avatar\n\n>calc (1+1) | :3 you already know\n\n>mts | speak with others users trough servers```')
+    return message.channel.send('```>help | show this panel\n\n>avatar (user) | show an avatar\n\n>calc (1+1) | :3 you already know\n\n'+
+    '>mts | speak with others users trough servers (in dvp)```')
 }
+
+if(command === 'eval'){
+
+    function clean(text) {
+        if (typeof(text) === "string")
+          return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+        else
+            return text;
+      }
+    
+          if(message.author.id !== "378879176515780619") return;
+          try {
+            const code = args.join(" ");
+            let evaled = eval(code);
+       
+            if (typeof evaled !== "string")
+              evaled = require("util").inspect(evaled);
+       
+            message.channel.send(clean(evaled), {code:"xl"});
+          } catch (err) {
+            message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+          }
+}
+
 
 })
 
-client.login(process.env.TOKEN)
+
+client.login('NTA1MDQ4MTcxNzE4OTAxNzcw.Dr53Mw.wGBPKgCSjyKhGkDinmJd8HXcp9Q')
