@@ -1,22 +1,26 @@
 {
-  "name": "bot",
-  "version": "1.0.0",
+  "name": "bot-tuto",
+  "version": "1.1.0",
+  "description": "bot tutorial",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "no repo"
+  },
+  "keywords": [
+    "test",
+    "fun",
+    "moderator"
+  ],
+  "author": "Nao",
   "license": "ISC",
   "dependencies": {
-    "ascii-art": "^1.4.4",
+    "d.js": "^0.7.5",
     "discord.js": "^11.4.2",
-    "ffmpeg": "0.0.4",
-    "figlet": "^1.2.0",
-    "fs": "0.0.1-security",
-    "mathjs": "^5.2.2",
-    "ytdl-core": "^0.24.0"
+    "mathjs": "^5.2.2"
   },
-  "devDependencies": {},
-  "description": ""
+  "devDependencies": {}
 }
