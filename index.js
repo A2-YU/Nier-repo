@@ -150,4 +150,4 @@ if(command === 'eval'){
 })
 
 
-client.login('NTA1MDQ4MTcxNzE4OTAxNzcw.Dr53Mw.wGBPKgCSjyKhGkDinmJd8HXcp9Q')
+client.login(process.env.TOKEN)
